@@ -217,7 +217,7 @@ hexoutフォルダにhexファイルが出力されている。<BR>
 
 1. hexファイルをbinファイルに変換<BR>
 EEPROMに書き込み可能な形式に変換する。<BR>
-- 方法その１<BR>
+    - 方法その１<BR>
 [FV1_HexToBin](https://www.dropbox.com/s/jg1805mid4g4kpn/FV1_HexToBin.zip?dl=0)を使う<BR>
 readme.txtの方法では変換できなかったので、以下の方法で変換した。<BR>
 コマンドプロンプトを管理者として実行<BR>
@@ -226,19 +226,18 @@ srec_cat.exeのあるフォルダに移動<BR>
 srec_cat input.hex -intel -o output.bin -binary<BR>
 output.binが生成される<BR>
 
-- 方法その２<BR>
+    - 方法その２<BR>
 変換用pythonプログラム[intelHex2bin.py](./hex2bin/intelHex2bin.py)を使用する。<BR>
 プログラム中の hex_to_bin('input.hex', 'output.bin') の部分を任意のファイル名に変更して実行<BR>
 
-- 変換したファイル<BR>
+    - 変換したファイル<BR>
 変換前output.bin 変換後20240908_test_SpinAsm Project.hex<BR>
 <img src="img/EEPROM/Hex_Bin_File.jpg" width="600"><BR>
-<BR>
+
 1. EEPROMに書き込む<BR>
 書き込みプログラムと書き込み器を入手する<BR>
 [AsProgrammer](https://github.com/nofeletru/UsbAsp-flash/releases)<BR>
 [CH341A ROMライター](https://www.amazon.co.jp/dp/B07LGNTJ29) CH341用ならなんでもよさそう（クリップ付きなどもあり）<BR>
-<BR>
 書き込み機をPCに接続(必要ならドライバーをインストール)<BR>
 書き込み機にEEPROMをセット<BR>
 <img src="img/EEPROM/EEPROM_WRITER.jpg" width="600"><BR>
