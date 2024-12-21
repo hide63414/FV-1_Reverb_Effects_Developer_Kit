@@ -225,11 +225,11 @@ srec_cat.exeのあるフォルダに移動<BR>
 変換したいbinファイルも同じフォルダに保存(input.hex)とする<BR>
 srec_cat input.hex -intel -o output.bin -binary<BR>
 output.binが生成される<BR>
-
+<BR>
     - 方法その２<BR>
 変換用pythonプログラム[intelHex2bin.py](./hex2bin/intelHex2bin.py)を使用する。<BR>
 プログラム中の hex_to_bin('input.hex', 'output.bin') の部分を任意のファイル名に変更して実行<BR>
-
+<BR>
     - 変換したファイル<BR>
 変換前output.bin 変換後20240908_test_SpinAsm Project.hex<BR>
 <img src="img/EEPROM/Hex_Bin_File.jpg" width="600"><BR>
