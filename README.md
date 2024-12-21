@@ -249,10 +249,10 @@ AsProgrammaerを実行<BR>
 通信をI2C、ターゲットに24CXX(使用するEEPROM)に設定<BR>
 書き込みボタンで書き込む<BR>
 <img src="img/EEPROM/AsProgrammer_EEPROM書き込み.png" width="600"><BR>
-
+<BR>
 1. EEPROMをソケットに挿入、ロータリスイッチで選択<BR>
-ロータリスイッチ0～7はFV-1内臓のエフェクト
-PROG0～8ロータリースイッチ8～Fに割り当てられる
+ロータリスイッチ0～7はFV-1内臓のエフェクト<BR>
+PROG0～8ロータリースイッチ8～Fに割り当てられる<BR>
 </details>
 
 ## TOOLリンク
