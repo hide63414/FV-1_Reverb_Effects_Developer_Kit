@@ -17,7 +17,7 @@ def hex_to_bin(hex_file, bin_file):
         f_bin.write(bytearray(int(byte, 16) for byte in data))
 
 # 使用例
-#hex_to_bin('input.hex', 'output.bin')
-hex_to_bin('20240908_test_SpinAsm Project.hex', 'output.bin')
+hex_to_bin('input.hex', 'output.bin')
+
 
 

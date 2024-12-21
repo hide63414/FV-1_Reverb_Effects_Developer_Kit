@@ -127,8 +127,6 @@ VR2:可変抵抗の接続<BR>
 <img src="img/BOX/Box_ComponentMounting.jpg" width="600"><BR>
  完成（電源表示LED追加）<BR>
 <img src="img/BOX/Assembly_Complete.jpg" width="600"><BR>
-
-
 </details>
 
 ## Barcoder内蔵タイプ作製例
@@ -196,11 +194,68 @@ Barcoderアンプ基板をねじ止め<BR>
 
 
 ## 外部エフェクト追加
-作成中<BR>
+<details><summary>追加方法</summary>
 
+1. 概要<BR>
+以下のサイトに詳しく記載されているので参考に。<BR>
+[REVERBS/EFFECTS　日本語説明書](https://home-bake-instruments.localinfo.jp/posts/37592163/)<BR>
 
+1. ユーザープログラムの入手<BR>
+[List of FV-1 Programs](https://mstratman.github.io/fv1-programs/)から、SPNファイルをダウンロードする。
+EEPROMには最大8種類書き込むことができる。
 
-## TOOL
+1. 開発プログラムのインストール<BR>
+[Spin Semiconducotr](https://www.spinsemi.com/products.html)から、SpinAsm assembler for the SPN(をダウンロード、インストールする。
+
+1. 書き込みデータ生成<BR>
+assembler for the SPNを起動して、PROG0～7に書き込みたいSPNファイルを選択する。<BR>
+各spnファイルを右クリックEdit This Fileで内容を確認できる。<BR>
+Pot0,1,2の割り当てを確認できる。<BR>
+<img src="img/EEPROM/SpinASM設定.jpg" width="600"><BR>
+Intel Hexにチェックを入れ、Buildボタンを押す。<BR>
+hexoutフォルダにhexファイルが出力されている。<BR>
+
+1. hexファイルをbinファイルに変換<BR>
+EEPROMに書き込み可能な形式に変換する。<BR>
+    - 方法その１<BR>
+[FV1_HexToBin](https://www.dropbox.com/s/jg1805mid4g4kpn/FV1_HexToBin.zip?dl=0)を使う<BR>
+readme.txtの方法では変換できなかったので、以下の方法で変換した。<BR>
+コマンドプロンプトを管理者として実行<BR>
+srec_cat.exeのあるフォルダに移動<BR>
+変換したいbinファイルも同じフォルダに保存(input.hex)とする<BR>
+srec_cat input.hex -intel -o output.bin -binary<BR>
+output.binが生成される<BR>
+
+    - 方法その２<BR>
+変換用pythonプログラム[intelHex2bin.py](./hex2bin/intelHex2bin.py)を使用する。<BR>
+プログラム中の hex_to_bin('input.hex', 'output.bin') の部分を任意のファイル名に変更して実行<BR>
+
+    - 変換したファイル<BR>
+変換前output.bin 変換後20240908_test_SpinAsm Project.hex<BR>
+<img src="img/EEPROM/Hex_Bin_File.jpg" width="600"><BR>
+
+1. EEPROMに書き込む<BR>
+書き込みプログラムと書き込み器を入手する<BR>
+[AsProgrammer](https://github.com/nofeletru/UsbAsp-flash/releases)<BR>
+[CH341A ROMライター](https://www.amazon.co.jp/dp/B07LGNTJ29) CH341用ならなんでもよさそう（クリップ付きなどもあり）<BR>
+<BR>
+書き込み機をPCに接続(必要ならドライバーをインストール)<BR>
+書き込み機にEEPROMをセット<BR>
+<img src="img/EEPROM/EEPROM_WRITER.jpg" width="600"><BR>
+セットの方向に注意<BR>
+<img src="img/EEPROM/EEPROM_WRITER2.jpg" width="600"><BR>
+<BR>
+AsProgrammaerを実行<BR>
+通信をI2C、ターゲットに24CXX(使用するEEPROM)に設定<BR>
+書き込みボタンで書き込む<BR>
+<img src="img/EEPROM/AsProgrammer_EEPROM書き込み.png" width="600"><BR>
+
+1. EEPROMをソケットに挿入、ロータリスイッチで選択<BR>
+ロータリスイッチ0～7はFV-1内臓のエフェクト
+PROG0～8ロータリースイッチ8～Fに割り当てられる
+</details>
+
+## TOOLリンク
 [SpinAsm software](https://www.spinsemi.com/products.html)　開発プログラム<BR>
 [FV-1 Programs](https://mstratman.github.io/fv1-programs/)　エフェクタプログラム<BR>
 [Free DSP Programs](http://www.spinsemi.com/programs.php)　エフェクタプログラム<BR>
